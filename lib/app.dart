@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tick_note/core/routes/app_router.dart';
 import 'package:tick_note/core/theme/cubit/theme_cubit.dart';
+import 'package:tick_note/features/splash/presentation/screens/splash_screen.dart';
 import 'package:tick_note/generated/l10n.dart';
 import 'package:tick_note/l10n/cubit/local_cubit.dart';
 
@@ -24,7 +26,8 @@ class TickNote extends StatelessWidget {
                 locale: Locale(locale),
                 title: 'TickNote',
                 theme: context.watch<ThemeCubit>().currentTheme(),
-                home: const HomePage(),
+                home: const SplashScreen(),
+                onGenerateRoute: AppRouter.generateRoute,
               );
             },
           );
