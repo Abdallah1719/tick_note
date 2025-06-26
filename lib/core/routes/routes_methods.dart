@@ -32,7 +32,7 @@ class RoutesMethods {
     Navigator.pushNamed(context, routeName, arguments: arguments);
   }
 
-  //  استرجاع البيانات في الصفحة الجديدة
+  //  push with (arguments) and remove until
   static T? getArgs<T>(BuildContext context) {
     final arguments = ModalRoute.of(context)?.settings.arguments;
     if (arguments is T) {
