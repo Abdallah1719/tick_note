@@ -1,57 +1,35 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'package:tick_note/generated/l10n.dart';
-
-// class TickNote extends StatelessWidget {
-//   const TickNote({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       localizationsDelegates: [
-//         S.delegate,
-//         GlobalMaterialLocalizations.delegate,
-//         GlobalWidgetsLocalizations.delegate,
-//         GlobalCupertinoLocalizations.delegate,
-//       ],
-//       supportedLocales: S.delegate.supportedLocales,
-//       locale: const Locale('en', ''), // Default locale
-//       title: 'TickNote',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//       home: Scaffold(
-//         appBar: AppBar(title: Text(S.of(context).title)),
-//         body: Center(child: const Text('Welcome to TickNote!')),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tick_note/core/data_source/theme/cubit/theme_cubit.dart';
 import 'package:tick_note/generated/l10n.dart';
+import 'package:tick_note/l10n/cubit/local_cubit.dart';
 
 class TickNote extends StatelessWidget {
   const TickNote({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => LocaleCubit()..loadSavedLocale()),
+        BlocProvider(create: (context) => ThemeCubit()),
       ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('en', ''),
-      title: 'TickNote',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      child: BlocBuilder<LocaleCubit, String>(
+        builder: (context, locale) {
+          return BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              return MaterialApp(
+                localizationsDelegates: LocaleCubit.localizationsDelegates,
+                supportedLocales: S.delegate.supportedLocales,
+                locale: Locale(locale),
+                title: 'TickNote',
+                theme: context.watch<ThemeCubit>().currentTheme(),
+                home: const HomePage(),
+              );
+            },
+          );
+        },
       ),
-      home: const HomePage(), // صفحة منفصلة
     );
   }
 }
@@ -62,7 +40,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).title)), // هنا هيشتغل
+      appBar: AppBar(title: Text(S.of(context).title)),
       body: const Center(child: Text('Welcome to TickNote!')),
     );
   }
