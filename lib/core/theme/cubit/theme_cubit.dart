@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tick_note/core/data_source/local_data_source/cache_helper.dart';
-import 'package:tick_note/core/data_source/theme/theme.dart';
+import 'package:tick_note/core/theme/theme.dart';
 
 part 'theme_state.dart';
 

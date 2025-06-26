@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+
+class NotesScreen extends StatelessWidget {
+  const NotesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Notes')),
+      body: Center(
+        child: Text(
+          'No notes available',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
+    );
+  }
+}
