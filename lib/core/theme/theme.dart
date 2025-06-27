@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tick_note/core/utils/index.dart';
 
 class AppTheme {
   static final ThemeData lightMode = ThemeData(
@@ -6,13 +7,13 @@ class AppTheme {
     fontFamily: 'Poppins',
     // app Bar Theme
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.black, // Text color
-      elevation: 0, // No shadow
+      backgroundColor: R.colors.white,
+      foregroundColor: R.colors.black,
+      elevation: 20, // No shadow
       iconTheme: IconThemeData(color: Colors.black), // Icon color
       titleTextStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 20,
+        color: R.colors.black,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -49,13 +50,13 @@ class AppTheme {
     fontFamily: 'Poppins',
     // app Bar Theme
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.black,
-      foregroundColor: Colors.white, // Text color
-      elevation: 0, // No shadow
-      iconTheme: IconThemeData(color: Colors.white), // Icon color
+      backgroundColor: R.colors.black,
+      foregroundColor: R.colors.white, // Text color
+      elevation: 20, // No shadow
+      iconTheme: IconThemeData(color: R.colors.white), // Icon color
       titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 20,
+        color: R.colors.white,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
     ),

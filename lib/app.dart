@@ -21,6 +21,7 @@ class TickNote extends StatelessWidget {
           return BlocBuilder<ThemeCubit, ThemeState>(
             builder: (context, state) {
               return MaterialApp(
+                debugShowCheckedModeBanner: false,
                 localizationsDelegates: LocaleCubit.localizationsDelegates,
                 supportedLocales: S.delegate.supportedLocales,
                 locale: Locale(locale),
