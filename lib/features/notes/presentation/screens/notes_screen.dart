@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tick_note/features/notes/presentation/widgets/custom_note_app_bar.dart';
 
 class NotesScreen extends StatelessWidget {
   const NotesScreen({super.key});
@@ -6,7 +7,7 @@ class NotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Notes')),
+      appBar: CustomNoteAppBar(),
       body: Center(
         child: Text(
           'No notes available',
@@ -16,3 +17,4 @@ class NotesScreen extends StatelessWidget {
     );
   }
 }
+
