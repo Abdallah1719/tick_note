@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
-import 'package:tick_note/core/data_source/local_data_source/cache_helper.dart';
+import 'package:tick_note/core/data_source/local_data_source/shared_preferences/cache_helper.dart';
 import 'package:tick_note/generated/l10n.dart';
 
 class LocaleCubit extends Cubit<String> {
