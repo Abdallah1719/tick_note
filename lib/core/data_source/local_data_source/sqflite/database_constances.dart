@@ -1,4 +1,4 @@
-class DatabaseConstances{
+ class DatabaseConstances{
   // Notes table
   static const String tableNotes = 'notes';
   static const String noteId = 'id';

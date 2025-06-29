@@ -1,4 +1,3 @@
-// features/notes/data/models/note_model.dart
 import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
 import 'package:tick_note/features/notes/domain/entities/note_entity.dart';
 
@@ -13,7 +12,7 @@ class NoteModel extends NoteEntity {
     super.isPinned = false,
   });
 
-  factory NoteModel.fromJson(Map<String, dynamic> json) {
+  factory NoteModel.fromMap(Map<String, dynamic> json) {
     return NoteModel(
       id: json[DatabaseConstances.noteId] as int?,
       title: json[DatabaseConstances.noteTitle] as String,
@@ -24,7 +23,7 @@ class NoteModel extends NoteEntity {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     final Map<String, dynamic> data = {};
     
     if (id != null) {
