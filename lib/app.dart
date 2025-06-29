@@ -5,6 +5,7 @@ import 'package:tick_note/core/services/service_locator.dart';
 import 'package:tick_note/core/theme/cubit/theme_cubit.dart';
 import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';
 import 'package:tick_note/features/splash/presentation/screens/splash_screen.dart';
+import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
 import 'package:tick_note/generated/l10n.dart';
 import 'package:tick_note/l10n/cubit/local_cubit.dart';
 
@@ -18,6 +19,7 @@ class TickNote extends StatelessWidget {
         BlocProvider(create: (context) => LocaleCubit()..loadSavedLocale()),
         BlocProvider(create: (context) => ThemeCubit()),
         BlocProvider(create: (context) => sl<NotesCubit>()),
+        BlocProvider(create: (context) => sl<TodoCubit>()),
       ],
       child: BlocBuilder<LocaleCubit, String>(
         builder: (context, locale) {

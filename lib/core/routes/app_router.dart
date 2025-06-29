@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tick_note/core/routes/routes_constances.dart';
 import 'package:tick_note/features/notes/presentation/screens/notes_page.dart';
 import 'package:tick_note/features/splash/presentation/screens/splash_screen.dart';
+import 'package:tick_note/features/todo/presentation/screens/todo_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -11,6 +12,10 @@ class AppRouter {
 
       case RoutesConstances.notesPath:
         return MaterialPageRoute(builder: (_) => const NotesPage());
+      case RoutesConstances.todoPath:
+        return MaterialPageRoute(
+          builder: (_) => const TodoScreen()
+        );
       default:
         return MaterialPageRoute(
           builder: (_) =>

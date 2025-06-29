@@ -43,7 +43,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     // bool isOnBoardingVisited =
     //     getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
     // if (isOnBoardingVisited == true) {
-    goToNextView(context, RoutesConstances.notesPath);
+    goToNextView(context, RoutesConstances.todoPath);
     // } else {
     //   goToNextView(context, RoutesConstances.onBoardingPath);
     // }
