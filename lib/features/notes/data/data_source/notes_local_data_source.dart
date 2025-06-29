@@ -1,5 +1,3 @@
-
-import 'package:flutter/material.dart';
 import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
 import 'package:tick_note/core/data_source/local_data_source/sqflite/database_helper.dart';
 import 'package:tick_note/core/error/failure.dart';
@@ -26,7 +24,8 @@ class NotesLocalDataSourceImpl implements NotesLocalDataSource {
     try {
       final result = await databaseHelper.query(
         tableName: DatabaseConstances.tableNotes,
-        orderBy: '${DatabaseConstances.noteIsPinned} DESC, ${DatabaseConstances.noteDate} DESC',
+        orderBy:
+            '${DatabaseConstances.noteIsPinned} DESC, ${DatabaseConstances.noteDate} DESC',
       );
       return result.map((map) => NoteModel.fromMap(map)).toList();
     } catch (e) {
@@ -104,9 +103,11 @@ class NotesLocalDataSourceImpl implements NotesLocalDataSource {
     try {
       final result = await databaseHelper.query(
         tableName: DatabaseConstances.tableNotes,
-        where: '${DatabaseConstances.noteTitle} LIKE ? OR ${DatabaseConstances.noteSubtitle} LIKE ?',
+        where:
+            '${DatabaseConstances.noteTitle} LIKE ? OR ${DatabaseConstances.noteSubtitle} LIKE ?',
         whereArgs: ['%$query%', '%$query%'],
-        orderBy: '${DatabaseConstances.noteIsPinned} DESC, ${DatabaseConstances.noteDate} DESC',
+        orderBy:
+            '${DatabaseConstances.noteIsPinned} DESC, ${DatabaseConstances.noteDate} DESC',
       );
       return result.map((map) => NoteModel.fromMap(map)).toList();
     } catch (e) {
