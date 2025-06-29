@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tick_note/core/services/service_locator.dart';
 
 import 'package:tick_note/features/notes/domain/entities/note_entity.dart';
 import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';

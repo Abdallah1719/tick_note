@@ -153,6 +153,7 @@ class NoteCard extends StatelessWidget {
       key: ValueKey(note.id),
       direction: DismissDirection.endToStart,
       confirmDismiss: (direction) async {
+        await Future.delayed(Duration(seconds: 2));
         return false; // Don't dismiss, just show actions
       },
       background: Container(
@@ -233,21 +234,21 @@ class NoteCard extends StatelessWidget {
     );
   }
 
-  Color _getColorFromHex(String hexColor) {
-    try {
-      return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
-    } catch (e) {
-      return Colors.white;
-    }
-  }
+  // Color _getColorFromHex(String hexColor) {
+  //   try {
+  //     return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
+  //   } catch (e) {
+  //     return Colors.white;
+  //   }
+  // }
 
-  int _colorFromHex(String hexColor) {
-    hexColor = hexColor.replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor'; // add alpha if not provided
-    }
-    return int.parse(hexColor, radix: 16);
-  }
+  // int _colorFromHex(String hexColor) {
+  //   hexColor = hexColor.replaceAll('#', '');
+  //   if (hexColor.length == 6) {
+  //     hexColor = 'FF$hexColor'; // add alpha if not provided
+  //   }
+  //   return int.parse(hexColor, radix: 16);
+  // }
 
   String _formatDate(DateTime date) {
     final now = DateTime.now();
