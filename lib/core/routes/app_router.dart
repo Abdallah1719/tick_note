@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tick_note/core/routes/routes_constances.dart';
-import 'package:tick_note/features/notes/presentation/screens/notes_screen.dart';
+import 'package:tick_note/features/notes/presentation/screens/notes_page.dart';
 import 'package:tick_note/features/splash/presentation/screens/splash_screen.dart';
 
 class AppRouter {
@@ -10,7 +10,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
 
       case RoutesConstances.notesPath:
-        return MaterialPageRoute(builder: (_) => const NotesScreen());
+        return MaterialPageRoute(builder: (_) => const NotesPage());
       default:
         return MaterialPageRoute(
           builder: (_) =>

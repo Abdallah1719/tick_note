@@ -7,7 +7,7 @@ import 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   final NotesRepository notesRepository;
 
-  NotesCubit({required this.notesRepository}) : super(NotesInitial());
+  NotesCubit( this.notesRepository) : super(NotesInitial());
 
   Future<void> getAllNotes() async {
     emit(NotesLoading());

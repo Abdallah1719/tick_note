@@ -24,5 +24,5 @@ void setupServiceLocator() {
   );
 
   // ==================== Cubits ====================
-  sl.registerFactory(() => NotesCubit(notesRepository: sl()));
+  sl.registerFactory(() => NotesCubit( sl()));
 }
