@@ -1,6 +1,7 @@
 // features/notes/data/models/note_model.dart
 import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
-import 'package:tick_note/features/notes/domain/entity/note_entity.dart';
+import 'package:tick_note/features/notes/domain/entities/note_entity.dart';
+
 
 class NoteModel extends NoteEntity {
   const NoteModel({

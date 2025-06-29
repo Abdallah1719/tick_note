@@ -10,8 +10,6 @@ class DatabaseFailure extends Failure {
 class NotFoundFailure extends Failure {
   const NotFoundFailure(super.message);
 }
-
-// core/error/exceptions.dart
 class DatabaseException implements Exception {
   final String message;
   const DatabaseException(this.message);

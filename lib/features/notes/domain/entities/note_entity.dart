@@ -1,4 +1,3 @@
-// features/notes/domain/entities/note_entity.dart
 import 'package:equatable/equatable.dart';
 
 class NoteEntity extends Equatable {
