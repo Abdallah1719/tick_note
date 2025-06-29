@@ -5,6 +5,10 @@ import 'package:tick_note/features/notes/data/data_source/notes_local_data_sourc
 import 'package:tick_note/features/notes/data/repository/notes_repo_implement.dart';
 import 'package:tick_note/features/notes/domain/repository/notes_repo.dart';
 import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';
+import 'package:tick_note/features/todo/data/data_source/todo_local_data_source.dart';
+import 'package:tick_note/features/todo/data/repository/todo_repository_lmpl.dart';
+import 'package:tick_note/features/todo/domain/repository/todo_repo.dart';
+import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
 
 final sl = GetIt.instance;
 void setupServiceLocator() {
@@ -25,4 +29,17 @@ void setupServiceLocator() {
 
   // ==================== Cubits ====================
   sl.registerFactory(() => NotesCubit( sl()));
+   // Data sources
+  sl.registerLazySingleton<TodoLocalDataSource>(
+    () => TodoLocalDataSourceImpl(sl<DatabaseHelper>()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<TodoRepository>(
+    () => TodoRepositoryImpl(sl<TodoLocalDataSource>()),
+  );
+
+  // Cubit
+  sl.registerFactory(() => TodoCubit(sl<TodoRepository>()));
 }
+
