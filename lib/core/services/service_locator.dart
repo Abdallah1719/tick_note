@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:tick_note/core/data_source/local_data_source/shared_preferences/cache_helper.dart';
-import 'package:tick_note/core/data_source/local_data_source/sqflite/database_helper.dart';
+import 'package:tick_note/core/storage/shared_preferences/cache_helper.dart';
+import 'package:tick_note/core/storage/datebase/database_helper.dart';
 import 'package:tick_note/features/notes/data/data_source/notes_local_data_source.dart';
 import 'package:tick_note/features/notes/data/repository/notes_repo_implement.dart';
 import 'package:tick_note/features/notes/domain/repository/notes_repo.dart';

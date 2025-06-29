@@ -201,21 +201,21 @@ class TodoItemWidget extends StatelessWidget {
                         const Spacer(),
                       ],
                       
-                      if (todo.createdAt != null) ...[
-                        Icon(
-                          Icons.access_time,
-                          size: 16,
+                      ...[
+                      Icon(
+                        Icons.access_time,
+                        size: 16,
+                        color: Colors.grey[400],
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        'أُنشئت ${_formatCreatedDate(todo.createdAt!)}',
+                        style: TextStyle(
+                          fontSize: 12,
                           color: Colors.grey[400],
                         ),
-                        const SizedBox(width: 4),
-                        Text(
-                          'أُنشئت ${_formatCreatedDate(todo.createdAt!)}',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                      ],
+                      ),
+                    ],
                     ],
                   ),
                 ],
@@ -312,15 +312,15 @@ class TodoItemWidget extends StatelessWidget {
                 ),
               ],
               
-              if (todo.createdAt != null) ...[
-                const SizedBox(height: 12),
-                _buildDetailRow(
-                  icon: Icons.access_time,
-                  label: 'تاريخ الإنشاء',
-                  value: _formatDateTime(context, todo.createdAt!),
-                  valueColor: Colors.grey,
-                ),
-              ],
+              ...[
+              const SizedBox(height: 12),
+              _buildDetailRow(
+                icon: Icons.access_time,
+                label: 'تاريخ الإنشاء',
+                value: _formatDateTime(context, todo.createdAt!),
+                valueColor: Colors.grey,
+              ),
+            ],
             ],
           ),
         ),

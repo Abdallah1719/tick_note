@@ -1,4 +1,4 @@
-import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
+import 'package:tick_note/core/storage/datebase/database_constances.dart';
 import 'package:tick_note/features/todo/domain/entities/todo_entity.dart';
 
 class TodoModel extends TodoEntity {
@@ -46,6 +46,7 @@ class TodoModel extends TodoEntity {
     );
   }
 
+  @override
   TodoModel copyWith({
     int? id,
     String? title,

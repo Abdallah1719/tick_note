@@ -1,5 +1,5 @@
-import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
-import 'package:tick_note/core/data_source/local_data_source/sqflite/database_helper.dart';
+import 'package:tick_note/core/storage/datebase/database_constances.dart';
+import 'package:tick_note/core/storage/datebase/database_helper.dart';
 import 'package:tick_note/core/error/failure.dart';
 import 'package:tick_note/features/notes/data/models/note_models.dart';
 

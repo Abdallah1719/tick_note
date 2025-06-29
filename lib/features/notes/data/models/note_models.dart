@@ -1,4 +1,4 @@
-import 'package:tick_note/core/data_source/local_data_source/sqflite/database_constances.dart';
+import 'package:tick_note/core/storage/datebase/database_constances.dart';
 import 'package:tick_note/features/notes/domain/entities/note_entity.dart';
 
 
