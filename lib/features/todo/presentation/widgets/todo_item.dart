@@ -209,7 +209,7 @@ class TodoItemWidget extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'أُنشئت ${_formatCreatedDate(todo.createdAt!)}',
+                        'أُنشئت ${_formatCreatedDate(todo.createdAt)}',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey[400],
@@ -317,7 +317,7 @@ class TodoItemWidget extends StatelessWidget {
               _buildDetailRow(
                 icon: Icons.access_time,
                 label: 'تاريخ الإنشاء',
-                value: _formatDateTime(context, todo.createdAt!),
+                value: _formatDateTime(context, todo.createdAt),
                 valueColor: Colors.grey,
               ),
             ],

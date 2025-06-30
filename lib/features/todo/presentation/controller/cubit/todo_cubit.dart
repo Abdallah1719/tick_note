@@ -3,7 +3,6 @@ import 'package:tick_note/features/todo/domain/entities/todo_entity.dart';
 import 'package:tick_note/features/todo/domain/repository/todo_repo.dart';
 import 'package:tick_note/features/todo/presentation/controller/cubit/todo_state.dart';
 
-
 class TodoCubit extends Cubit<TodoState> {
   final TodoRepository _todoRepository;
 
@@ -21,37 +20,28 @@ class TodoCubit extends Cubit<TodoState> {
   Future<void> insertTodo(TodoEntity todo) async {
     emit(TodoLoading());
     final result = await _todoRepository.insertTodo(todo);
-    result.fold(
-      (failure) => emit(TodoError(failure.message)),
-      (id) {
-        emit(const TodoOperationSuccess('Todo added successfully'));
-        getAllTodos(); // Refresh the list
-      },
-    );
+    result.fold((failure) => emit(TodoError(failure.message)), (id) {
+      emit(const TodoOperationSuccess('Todo added successfully'));
+      getAllTodos(); // Refresh the list
+    });
   }
 
   Future<void> updateTodo(TodoEntity todo) async {
     emit(TodoLoading());
     final result = await _todoRepository.updateTodo(todo);
-    result.fold(
-      (failure) => emit(TodoError(failure.message)),
-      (rowsAffected) {
-        emit(const TodoOperationSuccess('Todo updated successfully'));
-        getAllTodos(); // Refresh the list
-      },
-    );
+    result.fold((failure) => emit(TodoError(failure.message)), (rowsAffected) {
+      emit(const TodoOperationSuccess('Todo updated successfully'));
+      getAllTodos(); // Refresh the list
+    });
   }
 
   Future<void> deleteTodo(int id) async {
     emit(TodoLoading());
     final result = await _todoRepository.deleteTodo(id);
-    result.fold(
-      (failure) => emit(TodoError(failure.message)),
-      (rowsAffected) {
-        emit(const TodoOperationSuccess('Todo deleted successfully'));
-        getAllTodos(); // Refresh the list
-      },
-    );
+    result.fold((failure) => emit(TodoError(failure.message)), (rowsAffected) {
+      emit(const TodoOperationSuccess('Todo deleted successfully'));
+      getAllTodos(); // Refresh the list
+    });
   }
 
   Future<void> toggleTodoCompletion(TodoEntity todo) async {
@@ -106,12 +96,14 @@ class TodoCubit extends Cubit<TodoState> {
 
   Future<void> getTodosCounts() async {
     emit(TodoLoading());
-    
+
     final totalResult = await _todoRepository.getTodosCount();
     final completedResult = await _todoRepository.getCompletedTodosCount();
     final pendingResult = await _todoRepository.getPendingTodosCount();
 
-    if (totalResult.isLeft() || completedResult.isLeft() || pendingResult.isLeft()) {
+    if (totalResult.isLeft() ||
+        completedResult.isLeft() ||
+        pendingResult.isLeft()) {
       emit(const TodoError('Failed to get todos count'));
       return;
     }
@@ -120,26 +112,56 @@ class TodoCubit extends Cubit<TodoState> {
     final completedCount = completedResult.getOrElse(() => 0);
     final pendingCount = pendingResult.getOrElse(() => 0);
 
-    emit(TodoCounts(
-      totalCount: totalCount,
-      completedCount: completedCount,
-      pendingCount: pendingCount,
-    ));
+    emit(
+      TodoCounts(
+        totalCount: totalCount,
+        completedCount: completedCount,
+        pendingCount: pendingCount,
+      ),
+    );
   }
 
   Future<void> clearAllTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.clearAllTodos();
-    result.fold(
-      (failure) => emit(TodoError(failure.message)),
-      (rowsAffected) {
-        emit(const TodoOperationSuccess('All todos cleared successfully'));
-        getAllTodos(); // Refresh the list
-      },
-    );
+    result.fold((failure) => emit(TodoError(failure.message)), (rowsAffected) {
+      emit(const TodoOperationSuccess('All todos cleared successfully'));
+      getAllTodos(); // Refresh the list
+    });
   }
 
   void resetState() {
     emit(TodoInitial());
+  }
+
+  void searchTodos(String query) async {
+    try {
+      emit(TodoLoading());
+
+      if (query.isEmpty) {
+        // إذا كان البحث فارغ، أرجع كل المهام
+        getAllTodos();
+        return;
+      }
+
+      // جلب جميع المهام أولاً
+      final todos = await _todoRepository.getAllTodos.call();
+
+      todos.fold((failure) => emit(TodoError(failure.message)), (allTodos) {
+        // تصفية المهام حسب البحث
+        final filteredTodos = allTodos.where((todo) {
+          final titleLower = todo.title.toLowerCase();
+          final descriptionLower = (todo.description ?? '').toLowerCase();
+          final queryLower = query.toLowerCase();
+
+          return titleLower.contains(queryLower) ||
+              descriptionLower.contains(queryLower);
+        }).toList();
+
+        emit(TodoLoaded(filteredTodos));
+      });
+    } catch (e) {
+      emit(TodoError('An error occurred while searching todos: $e'));
+    }
   }
 }

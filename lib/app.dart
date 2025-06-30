@@ -8,6 +8,7 @@ import 'package:tick_note/features/splash/presentation/screens/splash_screen.dar
 import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
 import 'package:tick_note/generated/l10n.dart';
 import 'package:tick_note/l10n/cubit/local_cubit.dart';
+import 'package:tick_note/main_screen.dart';
 
 class TickNote extends StatelessWidget {
   const TickNote({super.key});
@@ -32,8 +33,8 @@ class TickNote extends StatelessWidget {
                 locale: Locale(locale),
                 title: 'TickNote',
                 theme: context.watch<ThemeCubit>().currentTheme(),
-                home: const SplashScreen(),
-                onGenerateRoute: AppRouter.generateRoute,
+                home: const MainScreen(),
+                // onGenerateRoute: AppRouter.generateRoute,
               );
             },
           );
