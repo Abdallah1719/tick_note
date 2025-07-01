@@ -6,7 +6,7 @@ import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cub
 import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
 import 'package:tick_note/generated/l10n.dart';
 import 'package:tick_note/l10n/cubit/local_cubit.dart';
-import 'package:tick_note/main_screen.dart';
+import 'package:tick_note/features/main/presentation/screens/main_screen.dart';
 
 class TickNote extends StatelessWidget {
   const TickNote({super.key});

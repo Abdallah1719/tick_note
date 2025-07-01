@@ -1,195 +1,12 @@
+// features/main/presentation/widgets/settings_drawer.dart
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';
-import 'package:tick_note/features/notes/presentation/screens/notes_page.dart';
-import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
-import 'package:tick_note/features/todo/presentation/screens/todo_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _isSearching = false;
-  final TextEditingController _searchController = TextEditingController();
-
-  void _onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-      // إيقاف البحث عند تغيير التاب
-      if (_isSearching) {
-        _stopSearch();
-      }
-    });
-  }
-
-  void _startSearch() {
-    setState(() {
-      _isSearching = true;
-    });
-  }
-
-  void _stopSearch() {
-    setState(() {
-      _isSearching = false;
-    });
-    _searchController.clear();
-    // إعادة تحميل البيانات حسب الصفحة النشطة
-    if (_currentIndex == 0) {
-      context.read<NotesCubit>().getAllNotes();
-    } else {
-      context.read<TodoCubit>().getAllTodos();
-    }
-  }
-
-  void _onSearchChanged(String query) {
-    if (_currentIndex == 0) {
-      context.read<NotesCubit>().searchNotes(query);
-    } else {
-      // البحث في المهام
-      context.read<TodoCubit>().searchTodos(query);
-    }
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
+class SettingsDrawer extends StatelessWidget {
+  const SettingsDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return
-    // MultiBlocProvider(
-    //   providers: [
-    //     // BlocProvider<NotesCubit>(create: (context) => sl<NotesCubit>()),
-    //     // BlocProvider<TodoCubit>(create: (context) => sl<TodoCubit>()),
-    //   ],
-    // child:
-    Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: _isSearching
-            ? _buildSearchBar()
-            : Text(
-                _currentIndex == 0 ? 'Notes' : 'Todo',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        foregroundColor: Theme.of(context).textTheme.titleLarge?.color,
-        leading: IconButton(
-          icon: const Icon(Icons.menu_rounded),
-          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-          tooltip: 'Settings',
-        ),
-        actions: _isSearching
-            ? null
-            : [
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: _startSearch,
-                  tooltip: 'Search',
-                ),
-                IconButton(
-                  icon: Icon(
-                    _currentIndex == 0 ? Icons.filter_list : Icons.tune,
-                  ),
-                  onPressed: () {
-                    // وظيفة التصفية
-                  },
-                  tooltip: 'Filter',
-                ),
-              ],
-      ),
-      drawer: _buildSettingsDrawer(context),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: const [NotesPage(), TodoScreen()],
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(0, -2),
-            ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _onTabTapped,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.grey,
-          selectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 12,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 11,
-          ),
-          elevation: 0,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.note_alt_outlined),
-              activeIcon: Icon(Icons.note_alt),
-              label: 'Notes',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.check_box_outlined),
-              activeIcon: Icon(Icons.check_box),
-              label: 'Todo',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSearchBar() {
-    return Container(
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: TextField(
-        controller: _searchController,
-        onChanged: _onSearchChanged,
-        autofocus: true,
-        decoration: InputDecoration(
-          hintText: _currentIndex == 0
-              ? 'البحث في الملاحظات...'
-              : 'البحث في المهام...',
-          prefixIcon: const Icon(Icons.search, size: 20),
-          suffixIcon: IconButton(
-            icon: const Icon(Icons.close, size: 20),
-            onPressed: _stopSearch,
-          ),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 10,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSettingsDrawer(BuildContext context) {
     return Drawer(
       child: Column(
         children: [
@@ -207,12 +24,12 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(Icons.settings_rounded, color: Colors.white, size: 32),
-                const SizedBox(height: 12),
-                const Text(
+                SizedBox(height: 12),
+                Text(
                   'الإعدادات',
                   style: TextStyle(
                     color: Colors.white,
@@ -220,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text(
+                Text(
                   'Settings',
                   style: TextStyle(color: Colors.white70, fontSize: 14),
                 ),
@@ -417,7 +234,7 @@ class _MainScreenState extends State<MainScreen> {
       applicationName: 'TickNote',
       applicationVersion: '1.0.0',
       applicationLegalese: '© 2024 TickNote App',
-      children: [const Text('تطبيق للملاحظات وقوائم المهام')],
+      children: const [Text('تطبيق للملاحظات وقوائم المهام')],
     );
   }
 
