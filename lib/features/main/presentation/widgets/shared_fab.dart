@@ -7,11 +7,11 @@ class SharedFloatingActionButton extends StatelessWidget {
   final String tooltip;
 
   const SharedFloatingActionButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
     required this.tooltip,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

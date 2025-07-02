@@ -12,7 +12,7 @@ class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onOpenDrawer;
 
   const SharedAppBar({
-    Key? key,
+    super.key,
     required this.title,
     required this.isSearching,
     required this.searchController,
@@ -21,7 +21,7 @@ class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onSearchChanged,
     required this.onSort,
     required this.onOpenDrawer,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

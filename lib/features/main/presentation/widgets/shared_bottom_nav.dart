@@ -6,10 +6,10 @@ class SharedBottomNavigation extends StatelessWidget {
   final ValueChanged<int> onTap;
 
   const SharedBottomNavigation({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
