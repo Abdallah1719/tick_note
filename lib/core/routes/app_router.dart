@@ -11,7 +11,6 @@ class AppRouter {
     switch (settings.name) {
       case RoutesConstances.splashPath:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-
       case RoutesConstances.notesPath:
         return MaterialPageRoute(builder: (_) => const NotesPage());
       case RoutesConstances.todoPath:

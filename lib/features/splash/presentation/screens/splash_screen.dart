@@ -38,15 +38,8 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       begin: .2,
       end: 1.2,
     ).animate(animationController!);
-
     animationController?.repeat(reverse: true);
-    // bool isOnBoardingVisited =
-    //     getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
-    // if (isOnBoardingVisited == true) {
     goToNextView(context, RoutesConstances.mainScreenPath);
-    // } else {
-    //   goToNextView(context, RoutesConstances.onBoardingPath);
-    // }
   }
 
   @override
