@@ -6,6 +6,7 @@ import 'package:tick_note/features/main/presentation/widgets/shared_bottom_nav.d
 import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';
 import 'package:tick_note/features/notes/presentation/screens/add_note_page.dart';
 import 'package:tick_note/features/notes/presentation/screens/notes_page.dart';
+import 'package:tick_note/features/settings/presentation/screens/settings_drawer.dart';
 import 'package:tick_note/features/todo/presentation/controller/cubit/todo_cubit.dart';
 import 'package:tick_note/features/todo/presentation/screens/todo_screen.dart';
 import 'package:tick_note/features/todo/presentation/widgets/bottom_sheet.dart';
