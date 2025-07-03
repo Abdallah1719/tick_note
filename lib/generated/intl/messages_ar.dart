@@ -22,6 +22,44 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
+        "aboutSubtitle":
+            MessageLookupByLibrary.simpleMessage("معلومات التطبيق والإصدار"),
+        "appDescription": MessageLookupByLibrary.simpleMessage(
+            "تطبيق للملاحظات وقوائم المهام"),
+        "appLegalese":
+            MessageLookupByLibrary.simpleMessage("© 2024 TickNote App"),
+        "appName": MessageLookupByLibrary.simpleMessage("TickNote"),
+        "arabicLanguage": MessageLookupByLibrary.simpleMessage("العربية"),
+        "autoTheme": MessageLookupByLibrary.simpleMessage("تلقائي"),
+        "backup": MessageLookupByLibrary.simpleMessage("النسخ الاحتياطي"),
+        "backupOptionsComingSoon": MessageLookupByLibrary.simpleMessage(
+            "خيارات النسخ الاحتياطي قريباً"),
+        "backupSubtitle":
+            MessageLookupByLibrary.simpleMessage("حفظ واستعادة البيانات"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("داكن"),
+        "englishLanguage": MessageLookupByLibrary.simpleMessage("English"),
+        "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+        "helpPageComingSoon":
+            MessageLookupByLibrary.simpleMessage("صفحة المساعدة قريباً"),
+        "helpSubtitle":
+            MessageLookupByLibrary.simpleMessage("الدعم والأسئلة الشائعة"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "languageSubtitle":
+            MessageLookupByLibrary.simpleMessage("تغيير لغة التطبيق"),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("فاتح"),
+        "notificationSettingsComingSoon":
+            MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات قريباً"),
+        "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "notificationsSubtitle":
+            MessageLookupByLibrary.simpleMessage("إعدادات التنبيهات"),
+        "selectLanguage": MessageLookupByLibrary.simpleMessage("اختيار اللغة"),
+        "selectTheme": MessageLookupByLibrary.simpleMessage("اختيار المظهر"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "settingsSubtitle": MessageLookupByLibrary.simpleMessage("Settings"),
+        "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+        "themeSubtitle":
+            MessageLookupByLibrary.simpleMessage("تغيير المظهر الفاتح والداكن"),
         "title": MessageLookupByLibrary.simpleMessage("ملاحظة")
       };
 }

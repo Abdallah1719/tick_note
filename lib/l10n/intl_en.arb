@@ -1,3 +1,31 @@
 {
-    "title": "TickNote"
+    "title": "TickNote",
+    "settings": "Settings",
+    "settingsSubtitle": "الإعدادات",
+    "theme": "Theme",
+    "themeSubtitle": "Change light and dark appearance",
+    "language": "Language",
+    "languageSubtitle": "Change app language",
+    "notifications": "Notifications",
+    "notificationsSubtitle": "Notification settings",
+    "backup": "Backup",
+    "backupSubtitle": "Save and restore data",
+    "about": "About",
+    "aboutSubtitle": "App information and version",
+    "help": "Help",
+    "helpSubtitle": "Support and FAQ",
+    "selectTheme": "Select Theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "autoTheme": "Auto",
+    "selectLanguage": "Select Language",
+    "arabicLanguage": "Arabic",
+    "englishLanguage": "English",
+    "notificationSettingsComingSoon": "Notification settings coming soon",
+    "backupOptionsComingSoon": "Backup options coming soon",
+    "helpPageComingSoon": "Help page coming soon",
+    "appName": "TickNote",
+    "appLegalese": "© 2024 TickNote App",
+    "appDescription": "Note-taking and task management app"
+
 }

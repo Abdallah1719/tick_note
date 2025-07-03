@@ -59,6 +59,276 @@ class S {
       args: [],
     );
   }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الإعدادات`
+  String get settingsSubtitle {
+    return Intl.message(
+      'الإعدادات',
+      name: 'settingsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message(
+      'Theme',
+      name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change light and dark appearance`
+  String get themeSubtitle {
+    return Intl.message(
+      'Change light and dark appearance',
+      name: 'themeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change app language`
+  String get languageSubtitle {
+    return Intl.message(
+      'Change app language',
+      name: 'languageSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification settings`
+  String get notificationsSubtitle {
+    return Intl.message(
+      'Notification settings',
+      name: 'notificationsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup`
+  String get backup {
+    return Intl.message(
+      'Backup',
+      name: 'backup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save and restore data`
+  String get backupSubtitle {
+    return Intl.message(
+      'Save and restore data',
+      name: 'backupSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App information and version`
+  String get aboutSubtitle {
+    return Intl.message(
+      'App information and version',
+      name: 'aboutSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get help {
+    return Intl.message(
+      'Help',
+      name: 'help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support and FAQ`
+  String get helpSubtitle {
+    return Intl.message(
+      'Support and FAQ',
+      name: 'helpSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Theme`
+  String get selectTheme {
+    return Intl.message(
+      'Select Theme',
+      name: 'selectTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get lightTheme {
+    return Intl.message(
+      'Light',
+      name: 'lightTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark`
+  String get darkTheme {
+    return Intl.message(
+      'Dark',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto`
+  String get autoTheme {
+    return Intl.message(
+      'Auto',
+      name: 'autoTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Language`
+  String get selectLanguage {
+    return Intl.message(
+      'Select Language',
+      name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabicLanguage {
+    return Intl.message(
+      'Arabic',
+      name: 'arabicLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get englishLanguage {
+    return Intl.message(
+      'English',
+      name: 'englishLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification settings coming soon`
+  String get notificationSettingsComingSoon {
+    return Intl.message(
+      'Notification settings coming soon',
+      name: 'notificationSettingsComingSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup options coming soon`
+  String get backupOptionsComingSoon {
+    return Intl.message(
+      'Backup options coming soon',
+      name: 'backupOptionsComingSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help page coming soon`
+  String get helpPageComingSoon {
+    return Intl.message(
+      'Help page coming soon',
+      name: 'helpPageComingSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TickNote`
+  String get appName {
+    return Intl.message(
+      'TickNote',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `© 2024 TickNote App`
+  String get appLegalese {
+    return Intl.message(
+      '© 2024 TickNote App',
+      name: 'appLegalese',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note-taking and task management app`
+  String get appDescription {
+    return Intl.message(
+      'Note-taking and task management app',
+      name: 'appDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

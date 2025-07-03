@@ -22,6 +22,44 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about": MessageLookupByLibrary.simpleMessage("About"),
+        "aboutSubtitle":
+            MessageLookupByLibrary.simpleMessage("App information and version"),
+        "appDescription": MessageLookupByLibrary.simpleMessage(
+            "Note-taking and task management app"),
+        "appLegalese":
+            MessageLookupByLibrary.simpleMessage("© 2024 TickNote App"),
+        "appName": MessageLookupByLibrary.simpleMessage("TickNote"),
+        "arabicLanguage": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "autoTheme": MessageLookupByLibrary.simpleMessage("Auto"),
+        "backup": MessageLookupByLibrary.simpleMessage("Backup"),
+        "backupOptionsComingSoon":
+            MessageLookupByLibrary.simpleMessage("Backup options coming soon"),
+        "backupSubtitle":
+            MessageLookupByLibrary.simpleMessage("Save and restore data"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
+        "englishLanguage": MessageLookupByLibrary.simpleMessage("English"),
+        "help": MessageLookupByLibrary.simpleMessage("Help"),
+        "helpPageComingSoon":
+            MessageLookupByLibrary.simpleMessage("Help page coming soon"),
+        "helpSubtitle": MessageLookupByLibrary.simpleMessage("Support and FAQ"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "languageSubtitle":
+            MessageLookupByLibrary.simpleMessage("Change app language"),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
+        "notificationSettingsComingSoon": MessageLookupByLibrary.simpleMessage(
+            "Notification settings coming soon"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "notificationsSubtitle":
+            MessageLookupByLibrary.simpleMessage("Notification settings"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Select Language"),
+        "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "settingsSubtitle": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "themeSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Change light and dark appearance"),
         "title": MessageLookupByLibrary.simpleMessage("TickNote")
       };
 }
