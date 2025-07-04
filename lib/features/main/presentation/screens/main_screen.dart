@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tick_note/features/main/presentation/widgets/settings_drawer.dart';
+
 import 'package:tick_note/features/main/presentation/widgets/shared_app_bar.dart';
 import 'package:tick_note/features/main/presentation/widgets/shared_bottom_nav.dart';
 import 'package:tick_note/features/notes/presentation/controller/cubit/notes_cubit.dart';
@@ -73,40 +73,7 @@ class _MainScreenState extends State<MainScreen> {
   void _showNotesSortOptions() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => Container(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.date_range),
-              title: const Text('ترتيب حسب التاريخ'),
-              onTap: () {
-                Navigator.pop(context);
-                // TODO: Add sort by date logic for notes
-                context.read<NotesCubit>().getAllNotes(); // Temporary
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.title),
-              title: const Text('ترتيب حسب العنوان'),
-              onTap: () {
-                Navigator.pop(context);
-                // TODO: Add sort by title logic for notes
-                context.read<NotesCubit>().getAllNotes(); // Temporary
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.push_pin),
-              title: const Text('المثبتة أولاً'),
-              onTap: () {
-                Navigator.pop(context);
-                context.read<NotesCubit>().getPinnedNotes();
-              },
-            ),
-          ],
-        ),
-      ),
+      builder: (context) => const NotesSortBottomSheet(),
     );
   }
 
@@ -221,6 +188,46 @@ class _MainScreenState extends State<MainScreen> {
         label: Text(_currentIndex == 0 ? 'ملاحظة جديدة' : 'مهمة جديدة'),
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
+      ),
+    );
+  }
+}
+
+class NotesSortBottomSheet extends StatelessWidget {
+  const NotesSortBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: const Icon(Icons.date_range),
+            title: const Text('ترتيب حسب التاريخ'),
+            onTap: () {
+              Navigator.pop(context);
+              context.read<NotesCubit>().getAllNotes();
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.title),
+            title: const Text('ترتيب حسب العنوان'),
+            onTap: () {
+              Navigator.pop(context);
+              context.read<NotesCubit>().getAllNotes();
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.push_pin),
+            title: const Text('المثبتة أولاً'),
+            onTap: () {
+              Navigator.pop(context);
+              context.read<NotesCubit>().getPinnedNotes();
+            },
+          ),
+        ],
       ),
     );
   }
