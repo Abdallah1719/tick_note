@@ -11,30 +11,23 @@ abstract class TodoState extends Equatable {
 class TodoInitial extends TodoState {}
 
 class TodoLoading extends TodoState {}
-
+// Todo Loaded
 class TodoLoaded extends TodoState {
   final List<TodoEntity> todos;
-
   const TodoLoaded(this.todos);
-
   @override
   List<Object?> get props => [todos];
 }
-
+// Todo Error
 class TodoError extends TodoState {
   final String message;
-
   const TodoError(this.message);
-
   @override
   List<Object?> get props => [message];
 }
-
 class TodoOperationSuccess extends TodoState {
   final String message;
-
   const TodoOperationSuccess(this.message);
-
   @override
   List<Object?> get props => [message];
 }
@@ -43,22 +36,18 @@ class TodoCounts extends TodoState {
   final int totalCount;
   final int completedCount;
   final int pendingCount;
-
   const TodoCounts({
     required this.totalCount,
     required this.completedCount,
     required this.pendingCount,
   });
-
   @override
   List<Object?> get props => [totalCount, completedCount, pendingCount];
 }
 
 class TodoDetails extends TodoState {
   final TodoEntity? todo;
-
   const TodoDetails(this.todo);
-
   @override
   List<Object?> get props => [todo];
 }

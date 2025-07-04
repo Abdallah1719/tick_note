@@ -17,23 +17,12 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   void initState() {
     super.initState();
-    // Load todos when screen initializes
     context.read<TodoCubit>().getAllTodos();
   }
-
-  // void _showAddTodoBottomSheet() {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     isScrollControlled: true,
-  //     backgroundColor: Colors.transparent,
-  //     builder: (context) => AddTodoBottomSheet(),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // بدون AppBar - يتم التحكم فيه من MainScreen
       body: BlocConsumer<TodoCubit, TodoState>(
         listener: (context, state) {
           if (state is TodoOperationSuccess) {
@@ -95,18 +84,12 @@ class _TodoScreenState extends State<TodoScreen> {
                 ),
               );
             }
-
             return RefreshIndicator(
               onRefresh: () async {
                 context.read<TodoCubit>().getAllTodos();
               },
               child: ListView.builder(
-                padding: const EdgeInsets.fromLTRB(
-                  16,
-                  8,
-                  16,
-                  100,
-                ), // مساحة للـ FAB من MainScreen
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
                 itemCount: state.todos.length,
                 itemBuilder: (context, index) {
                   final todo = state.todos[index];

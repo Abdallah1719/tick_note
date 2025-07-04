@@ -7,7 +7,7 @@ class TodoCubit extends Cubit<TodoState> {
   final TodoRepository _todoRepository;
 
   TodoCubit(this._todoRepository) : super(TodoInitial());
-
+  // get All Todos
   Future<void> getAllTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.getAllTodos();
@@ -17,6 +17,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // insert Todo
   Future<void> insertTodo(TodoEntity todo) async {
     emit(TodoLoading());
     final result = await _todoRepository.insertTodo(todo);
@@ -26,6 +27,7 @@ class TodoCubit extends Cubit<TodoState> {
     });
   }
 
+  // update Todo
   Future<void> updateTodo(TodoEntity todo) async {
     emit(TodoLoading());
     final result = await _todoRepository.updateTodo(todo);
@@ -35,6 +37,7 @@ class TodoCubit extends Cubit<TodoState> {
     });
   }
 
+  // delete Todo
   Future<void> deleteTodo(int id) async {
     emit(TodoLoading());
     final result = await _todoRepository.deleteTodo(id);
@@ -49,6 +52,7 @@ class TodoCubit extends Cubit<TodoState> {
     await updateTodo(updatedTodo);
   }
 
+  // get Todo By Id
   Future<void> getTodoById(int id) async {
     emit(TodoLoading());
     final result = await _todoRepository.getTodoById(id);
@@ -58,6 +62,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // get Completed Todos
   Future<void> getCompletedTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.getCompletedTodos();
@@ -67,6 +72,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // get Pending Todos
   Future<void> getPendingTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.getPendingTodos();
@@ -76,6 +82,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // get Todos By Date
   Future<void> getTodosByDate(DateTime date) async {
     emit(TodoLoading());
     final result = await _todoRepository.getTodosByDate(date);
@@ -85,6 +92,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // get Overdue Todos
   Future<void> getOverdueTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.getOverdueTodos();
@@ -94,6 +102,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // get Todos Counts
   Future<void> getTodosCounts() async {
     emit(TodoLoading());
 
@@ -121,6 +130,7 @@ class TodoCubit extends Cubit<TodoState> {
     );
   }
 
+  // clear All Todos
   Future<void> clearAllTodos() async {
     emit(TodoLoading());
     final result = await _todoRepository.clearAllTodos();
@@ -130,25 +140,16 @@ class TodoCubit extends Cubit<TodoState> {
     });
   }
 
-  void resetState() {
-    emit(TodoInitial());
-  }
-
+  // search Todos
   void searchTodos(String query) async {
     try {
       emit(TodoLoading());
-
       if (query.isEmpty) {
-        // إذا كان البحث فارغ، أرجع كل المهام
         getAllTodos();
         return;
       }
-
-      // جلب جميع المهام أولاً
       final todos = await _todoRepository.getAllTodos.call();
-
       todos.fold((failure) => emit(TodoError(failure.message)), (allTodos) {
-        // تصفية المهام حسب البحث
         final filteredTodos = allTodos.where((todo) {
           final titleLower = todo.title.toLowerCase();
           final descriptionLower = (todo.description ?? '').toLowerCase();
@@ -163,5 +164,10 @@ class TodoCubit extends Cubit<TodoState> {
     } catch (e) {
       emit(TodoError('An error occurred while searching todos: $e'));
     }
+  }
+
+  // Reset the state to initial
+  void resetState() {
+    emit(TodoInitial());
   }
 }

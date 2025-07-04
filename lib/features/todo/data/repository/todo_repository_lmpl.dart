@@ -5,12 +5,11 @@ import 'package:tick_note/features/todo/data/models/todo_model.dart';
 import 'package:tick_note/features/todo/domain/entities/todo_entity.dart';
 import 'package:tick_note/features/todo/domain/repository/todo_repo.dart';
 
-
 class TodoRepositoryImpl implements TodoRepository {
   final TodoLocalDataSource _localDataSource;
 
   TodoRepositoryImpl(this._localDataSource);
-
+  // insert Todo
   @override
   Future<Either<Failure, int>> insertTodo(TodoEntity todo) async {
     try {
@@ -22,6 +21,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get All Todos
   @override
   Future<Either<Failure, List<TodoEntity>>> getAllTodos() async {
     try {
@@ -32,6 +32,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  //  get Todo By Id
   @override
   Future<Either<Failure, TodoEntity?>> getTodoById(int id) async {
     try {
@@ -42,6 +43,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // update Todo
   @override
   Future<Either<Failure, int>> updateTodo(TodoEntity todo) async {
     try {
@@ -53,6 +55,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  //  delete Todo
   @override
   Future<Either<Failure, int>> deleteTodo(int id) async {
     try {
@@ -63,6 +66,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Completed Todos
   @override
   Future<Either<Failure, List<TodoEntity>>> getCompletedTodos() async {
     try {
@@ -73,6 +77,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Pending Todos
   @override
   Future<Either<Failure, List<TodoEntity>>> getPendingTodos() async {
     try {
@@ -83,8 +88,11 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Todos By Date
   @override
-  Future<Either<Failure, List<TodoEntity>>> getTodosByDate(DateTime date) async {
+  Future<Either<Failure, List<TodoEntity>>> getTodosByDate(
+    DateTime date,
+  ) async {
     try {
       final result = await _localDataSource.getTodosByDate(date);
       return Right(result);
@@ -93,6 +101,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Overdue Todos
   @override
   Future<Either<Failure, List<TodoEntity>>> getOverdueTodos() async {
     try {
@@ -103,6 +112,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Todos Count
   @override
   Future<Either<Failure, int>> getTodosCount() async {
     try {
@@ -113,6 +123,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  //  get Completed Todos Count
   @override
   Future<Either<Failure, int>> getCompletedTodosCount() async {
     try {
@@ -123,6 +134,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // get Pending Todos Count
   @override
   Future<Either<Failure, int>> getPendingTodosCount() async {
     try {
@@ -133,6 +145,7 @@ class TodoRepositoryImpl implements TodoRepository {
     }
   }
 
+  // clear All Todos
   @override
   Future<Either<Failure, int>> clearAllTodos() async {
     try {

@@ -1,4 +1,4 @@
- class DatabaseConstances{
+class DatabaseConstances {
   // Notes table
   static const String tableNotes = 'notes';
   static const String noteId = 'id';
@@ -7,8 +7,7 @@
   static const String noteDate = 'date';
   static const String noteColor = 'color';
   static const String noteIsPinned = 'is_pinned';
-
-  // Todos table (for future use)
+  // Todos table
   static const String tableTodos = 'todos';
   static const String todoId = 'id';
   static const String todoTitle = 'title';

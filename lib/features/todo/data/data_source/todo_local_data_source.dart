@@ -22,7 +22,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   final DatabaseHelper _databaseHelper;
 
   TodoLocalDataSourceImpl(this._databaseHelper);
-
+  // insert Todo
   @override
   Future<int> insertTodo(TodoModel todo) async {
     try {
@@ -35,6 +35,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get All Todos
   @override
   Future<List<TodoModel>> getAllTodos() async {
     try {
@@ -48,6 +49,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Todo By Id
   @override
   Future<TodoModel?> getTodoById(int id) async {
     try {
@@ -62,6 +64,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // update Todo
   @override
   Future<int> updateTodo(TodoModel todo) async {
     try {
@@ -76,6 +79,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // delete Todo
   @override
   Future<int> deleteTodo(int id) async {
     try {
@@ -89,6 +93,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Completed Todos
   @override
   Future<List<TodoModel>> getCompletedTodos() async {
     try {
@@ -104,6 +109,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Pending Todos
   @override
   Future<List<TodoModel>> getPendingTodos() async {
     try {
@@ -119,12 +125,24 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Todos By Date
   @override
   Future<List<TodoModel>> getTodosByDate(DateTime date) async {
     try {
-      final String startDate = DateTime(date.year, date.month, date.day).toIso8601String();
-      final String endDate = DateTime(date.year, date.month, date.day, 23, 59, 59).toIso8601String();
-      
+      final String startDate = DateTime(
+        date.year,
+        date.month,
+        date.day,
+      ).toIso8601String();
+      final String endDate = DateTime(
+        date.year,
+        date.month,
+        date.day,
+        23,
+        59,
+        59,
+      ).toIso8601String();
+
       final List<Map<String, dynamic>> maps = await _databaseHelper.query(
         tableName: DatabaseConstances.tableTodos,
         where: '${DatabaseConstances.todoCreatedAt} BETWEEN ? AND ?',
@@ -137,14 +155,16 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Overdue Todos
   @override
   Future<List<TodoModel>> getOverdueTodos() async {
     try {
       final String currentDate = DateTime.now().toIso8601String();
-      
+
       final List<Map<String, dynamic>> maps = await _databaseHelper.query(
         tableName: DatabaseConstances.tableTodos,
-        where: '${DatabaseConstances.todoDueDate} < ? AND ${DatabaseConstances.todoIsCompleted} = ?',
+        where:
+            '${DatabaseConstances.todoDueDate} < ? AND ${DatabaseConstances.todoIsCompleted} = ?',
         whereArgs: [currentDate, 0],
         orderBy: '${DatabaseConstances.todoDueDate} ASC',
       );
@@ -154,6 +174,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Todos Count
   @override
   Future<int> getTodosCount() async {
     try {
@@ -165,6 +186,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  //  get Completed Todos Count
   @override
   Future<int> getCompletedTodosCount() async {
     try {
@@ -178,6 +200,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // get Pending Todos Count
   @override
   Future<int> getPendingTodosCount() async {
     try {
@@ -191,6 +214,7 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
     }
   }
 
+  // clear All Todos
   @override
   Future<int> clearAllTodos() async {
     try {
